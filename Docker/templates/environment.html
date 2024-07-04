@@ -1,0 +1,43 @@
+<!-- templates/namespaces.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ENVS</title>
+    <style>
+         header{
+        background-color: #3498db; /* Blue header background */
+        color: #fff; /* White text color */
+        padding: 20px;
+        text-align: center;
+        }
+        section{
+            max-width: 1800px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family:"Calibri", sans-serif;
+            background-color: #fff; /* White section background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ deployment }} deployment environment variables</h1>
+    </header>
+    <section>
+        <table border="1">
+            <tr>
+                <th>Key</th> 
+                <th>Value</th>
+            </tr>
+            {% for key, value in environment.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+ 
+</body>
+</html>

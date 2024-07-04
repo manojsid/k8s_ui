@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-k8s
+  labels:
+    app: flask-app-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app-k8s
+  template:
+    metadata:
+      labels:
+        app: flask-app-k8s
+    spec:
+      imagePullSecrets:
+      - name: <<key>>
+      containers:
+      - name: flask-app-k8s
+        image: <<Image>>
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-k8s-service
+spec:
+  selector:
+    app: flask-app-k8s
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: ClusterIP

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kubernetes Deployments</title>
+    <style>
+        header{
+        background-color: #3498db; /* Blue header background */
+        color: #fff; /* White text color */
+        padding: 20px;
+        text-align: center;
+        }
+        section {
+            max-width: 1800px;
+            margin: 20px auto;
+            padding: 20px;
+            font-family:"Calibri", sans-serif;
+            background-color: #fff; /* White section background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Deployments in {{ ns_name }} namespace</h1>
+    </header>
+    <section>
+        <table border="1">
+            <tr>
+                <th>Deployment Name</th> 
+                <th>Image Name</th>
+                <th>Replicas</th>
+            </tr>
+            {% for deployment, image, replicas in deployments %}
+            <tr>
+                <td><a href="{{ url_for('environment', namespace_name=ns_name, deployment_name=deployment) }}">{{ deployment }}</a></td>
+                <td>{{ image }}</td>
+                <td>{{ replicas }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+ 
+</body>
+</html>

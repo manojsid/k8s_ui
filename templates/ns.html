@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kubernetes Namespaces</title>
+    <style>
+        header {
+        background-color: #3498db; /* Blue header background */
+        color: #fff; /* White text color */
+        padding: 20px;
+        text-align: center;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* White section background */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Available namespaces in the DEV environment</h1>
+    </header>
+    <section>
+        {% for namespace in namespaces %}
+           <li> <a href="{{ url_for('deployments', namespace_name=namespace) }}">{{ namespace }}</a> </li>
+        {% endfor %}
+    </p>
+    </section>
+    <ul>
+        
+    </ul>
+</body>
+</html>
